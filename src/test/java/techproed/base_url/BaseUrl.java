@@ -8,10 +8,10 @@ import static techproed.utilities.Authentication.generateToken;
 
 public class BaseUrl {
     public static RequestSpecification spec;
-    public static void setup(){
+    public static void setup(String username, String password){
         spec = new RequestSpecBuilder()
                 .setBaseUri("https://managementonschools.com/app")
-                .addHeader("Authorization", generateToken())
+                .addHeader("Authorization", generateToken(username, password))
                 .setContentType(ContentType.JSON)
                 .build();
     }

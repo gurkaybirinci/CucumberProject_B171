@@ -125,7 +125,7 @@ public class AddDeanStepDefs {
     public static String ListSSNNo;
     @When("DeanSSN kutusuna SSNno girer")
     public void dean_ssn_kutusuna_ss_nno_girer() {
-        ListSSNNo = "523-65-6878";
+        ListSSNNo = "523-25-6178";
         addDean.ssn.sendKeys(ListSSNNo);
         ReusableMethods.waitFor(2);
     }
