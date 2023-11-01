@@ -27,7 +27,6 @@ public class DeanManagementAPI {
 
     @Given("Dean Save icin URL duzenlenir")
     public void deanSaveIcinURLDuzenlenir() {
-        setup("AdminGurkay", "Gurkay123+");
         spec.pathParams("first", "dean", "second", "save");
     }
 
@@ -62,7 +61,6 @@ public class DeanManagementAPI {
 
     @Given("Kayitli Dean hesab bilgisinin ID nosu alinir")
     public void kayitliDeanHesabBilgisininIDNosuAlinir() {
-        setup("AdminGurkay", "Gurkay123+");
         spec.pathParams("first", "dean", "second", "getAll");
         response = given(spec).when().get("{first}/{second}");
 
@@ -112,5 +110,26 @@ public class DeanManagementAPI {
     @When("Dean Delete icin DELETE Request gonderilir ve Response alinir")
     public void deanDeleteIcinDELETERequestGonderilirVeResponseAlinir() {
         response = given(spec).when().delete("{first}/{second}/{third}");
+    }
+
+    @Given("{string} yetkisi ile giris yapilir")
+    public void yetkisiIleGirisYapilir(String user) {
+        switch (user){
+            case "Admin":
+                setup("AdminGurkay", "Gurkay123+");
+                System.out.println("Admin yetkisi ile giriş yapıldı.");
+                break;
+            case "Dean":
+                setup("DeanGurkay", "Gurkay123+");
+                System.out.println("Admin yetkisi ile giriş yapıldı.");
+                break;
+            case "Vice Dean":
+                setup("DeanGurkay", "Gurkay123+");
+                System.out.println("Admin yetkisi ile giriş yapıldı.");
+                break;
+            default:
+                System.out.println("Geçersiz bir yetki ile giriş yapmaya çalıştınız.");
+                break;
+        }
     }
 }

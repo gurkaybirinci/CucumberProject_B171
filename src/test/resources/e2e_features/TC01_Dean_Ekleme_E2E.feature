@@ -23,7 +23,8 @@ Feature: Admin Dean Ekleyebilmeli
     Then Dean kaydi yapildigi dogrulanir
 
   Scenario: Olusturulan Dean hesap bilgisini alma testi
-    Given Kayitli Dean hesab bilgisinin ID nosu alinir
+    Given "Admin" yetkisi ile giris yapilir
+    And Kayitli Dean hesab bilgisinin ID nosu alinir
     And Dean GetManagerById icin URL duzenlenir
     And Dean GetManagerById icin beklenen veriler duzenlenir
     When Dean GetManagerById icin GET Request gonderilir ve Response alinir
@@ -38,15 +39,7 @@ Feature: Admin Dean Ekleyebilmeli
     And Baglanti kesilir
 
   Scenario: Kayitli Dean hesabi silme testi
-    Given Dean Delete icin URL duzenlenir
+    Given "Admin" yetkisi ile giris yapilir
+    And Dean Delete icin URL duzenlenir
     When Dean Delete icin DELETE Request gonderilir ve Response alinir
     Then Status kodun 200 oldugu dogrulanir
-
-
-
-
-
-
-
-
-
